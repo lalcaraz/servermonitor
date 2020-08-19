@@ -1,0 +1,9 @@
+# Resource Alerts
+*/2 * * * * bash /srv/server-monitoring.sh —hostname=your_hostname —from=server@your_domain.com —to=your_email@your_domain.com —cpu=warning=20:critical=50 —memory=warning=30:critical=60 —disk=warning=40:critical=60:fatal=70
+
+# Backups
+0 1 * * * /srv/backupDB.sh &
+
+# Start Mongo and Servers
+@reboot sudo service mongod start & 
+@reboot forever start /srv/iaic_peer_backend/server.js &
